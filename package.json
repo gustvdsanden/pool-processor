@@ -1,6 +1,6 @@
 {
   "name": "pool-processor",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "processes work in a pool",
   "main": "dist/pool-processor.cjs.js",
   "type": "module",
