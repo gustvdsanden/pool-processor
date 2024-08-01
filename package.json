@@ -1,0 +1,16 @@
+{
+  "name": "pool-processor",
+  "version": "1.0.0",
+  "description": "processes work in a pool",
+  "main": "index.ts",
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "start": "tsx src/index.ts"
+  },
+  "dependencies": {
+    "@types/node": "^22.0.0",
+    "tsx": "^4.16.2",
+    "typescript": "^5.5.4"
+  }
+}
