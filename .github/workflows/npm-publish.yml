@@ -4,30 +4,44 @@
 name: Node.js Package
 
 on:
-  release:
-    types: [created]
+  push:
+    branches:
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Setup Node.js LTS
+        uses: actions/setup-node@v3
         with:
-          node-version: 20
-      - run: npm ci
-      - run: npm preconstruct build
+          node-version: lts/*
+          cache: yarn
 
-  publish-npm:
+      - name: Install Dependencies
+        run: yarn install
+        shell: bash
+
+      - name: Build
+        run: yarn build
+        shell: bash
+
+  publish:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Setup Node.js LTS
+        uses: actions/setup-node@v3
         with:
-          node-version: 20
-          registry-url: https://registry.npmjs.org/
-      - run: npm ci
-      - run: npm publish
+          node-version: lts/*
+          cache: yarn
+
+      - name: Install Dependencies
+        run: yarn install
+        shell: bash
+
+      - name: publish
+        run: yarn publish
+        shell: bash
         env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_ACCESS_TOKEN}}
+          NPM_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}

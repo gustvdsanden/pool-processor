@@ -9,7 +9,8 @@
     "dist"
   ],
   "scripts": {
-    "start": "tsx src/index.ts"
+    "start": "tsx src/index.ts",
+    "build": "preconstruct build"
   },
   "dependencies": {
     "@types/node": "^22.0.0",
