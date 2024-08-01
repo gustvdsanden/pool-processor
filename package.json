@@ -2,9 +2,12 @@
   "name": "pool-processor",
   "version": "1.0.0",
   "description": "processes work in a pool",
-  "main": "index.ts",
+  "main": "dist/pool-processor.cjs.js",
   "type": "module",
   "license": "MIT",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "start": "tsx src/index.ts"
   },
@@ -12,5 +15,12 @@
     "@types/node": "^22.0.0",
     "tsx": "^4.16.2",
     "typescript": "^5.5.4"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.24.8",
+    "@babel/core": "^7.25.2",
+    "@babel/preset-flow": "^7.24.7",
+    "@babel/preset-typescript": "^7.24.7",
+    "@preconstruct/cli": "^2.8.7"
   }
 }
