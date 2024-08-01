@@ -10,9 +10,10 @@ on:
 
 jobs:
   version:
-    - name: Version Increment
-      uses: reecetech/version-increment@2024.4.4
-            
+    steps:
+      - name: Version Increment
+        uses: reecetech/version-increment@2024.4.4
+
   build:
     runs-on: ubuntu-latest
     steps:
