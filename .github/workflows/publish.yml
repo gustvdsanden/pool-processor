@@ -11,10 +11,10 @@ on:
 jobs:
   version:
     steps:
-      - name: Version Increment
-        uses: reecetech/version-increment@2024.4.4
+      - uses: reecetech/version-increment@2024.4.4
 
   build:
+    needs: version
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
