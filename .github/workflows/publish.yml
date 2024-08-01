@@ -10,6 +10,7 @@ on:
 
 jobs:
   version:
+    runs-on: ubuntu-latest
     steps:
       - uses: reecetech/version-increment@2024.4.4
 
