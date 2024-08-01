@@ -12,7 +12,10 @@ jobs:
   version:
     runs-on: ubuntu-latest
     steps:
-      - uses: reecetech/version-increment@2024.4.4
+      - uses: codacy/git-version@2.4.0
+        with:
+          # The name of the release branch
+          release-branch: main
 
   build:
     needs: version
