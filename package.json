@@ -10,6 +10,7 @@
   ],
   "scripts": {
     "start": "tsx src/index.ts",
+    "start:example": "tsx example/index.ts",
     "build": "preconstruct build"
   },
   "dependencies": {
