@@ -32,7 +32,7 @@ export default async function resolvePromiseInChain<
     }
   } catch (error: any) {
     errorStream?.push(
-      JSON.stringify({ item: currentItem, error: error.message })
+      JSON.stringify({ item: currentItem, retriesLeft, error: error.message })
     );
     const decreasedRetryCounter = retriesLeft - 1;
     if (decreasedRetryCounter >= 0) {
