@@ -19,7 +19,7 @@ export default async function resolvePromiseInChain<
 
   try {
     const result = await cb(currentItem);
-    resultsStream?.push(JSON.stringify(result));
+    resultsStream?.push(JSON.stringify({ item: currentItem, result }));
 
     if (remainingChunk.length > 0) {
       await resolvePromiseInChain(
@@ -31,7 +31,9 @@ export default async function resolvePromiseInChain<
       );
     }
   } catch (error: any) {
-    errorStream?.push(error.message);
+    errorStream?.push(
+      JSON.stringify({ item: currentItem, error: error.message })
+    );
     const decreasedRetryCounter = retriesLeft - 1;
     if (decreasedRetryCounter >= 0) {
       await resolvePromiseInChain(
