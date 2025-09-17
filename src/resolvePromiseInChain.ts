@@ -37,12 +37,22 @@ export default async function resolvePromiseInChain<
     const decreasedRetryCounter = retriesLeft - 1;
     if (decreasedRetryCounter >= 0) {
       await resolvePromiseInChain(
-        [currentItem],
+        [...remainingChunk, currentItem],
         cb,
         decreasedRetryCounter,
         resultsStream,
         errorStream
       );
+    } else {
+      if (remainingChunk.length > 0) {
+        await resolvePromiseInChain(
+          remainingChunk,
+          cb,
+          retriesLeft,
+          resultsStream,
+          errorStream
+        );
+      }
     }
   }
 }

@@ -51,15 +51,20 @@ export function poolToStream<TResult, TInput extends unknown>(
     )
   );
 
-  Promise.all(promises).then(() => {
-    resultsStream.push(null);
-    errorStream.push(null);
-  });
+  // Promise.all(promises).then(() => {
+  //   resultsStream.push(null);
+  //   errorStream.push(null);
+  // });
 
   const finished = new Promise<void>(async (resolve) => {
     await Promise.all(promises);
     resolve();
   });
+
+  finished.then(() => {
+    resultsStream.push(null);
+    errorStream.push(null);
+  })
 
   return {
     resultsStream,
